@@ -104,6 +104,9 @@ class Renderer extends AbstractExport
                         break;
 
                     case 'ZfcDatagrid\Column\Type\DateTime':
+			if (!($value instanceof \DateTime)) {
+				$value = new \DateTime($value);
+			}
                         if ($value instanceof \DateTime) {
                             $value->setTimezone(new \DateTimeZone($col->getType()
                                 ->getOutputTimezone()));
